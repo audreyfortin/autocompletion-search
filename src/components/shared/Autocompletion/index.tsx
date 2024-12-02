@@ -102,6 +102,7 @@ const Autocompletion: React.FC<AutocompletionProps> = ({
           highlightedIndex={highlightedIndex}
           onSuggestionClick={handleSuggestionClick}
           onHighlightChange={setHighlightedIndex}
+          query={inputValue}
         />
       )}
       {isDropdownVisible && suggestions.length === 0 && !loading && !error && (
