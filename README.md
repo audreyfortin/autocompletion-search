@@ -19,6 +19,12 @@ Clone this repository to your local machine:
 
 ```bash
 git clone https://github.com/audreyfortin/autocompletion-search.git
+
+**### 2. Go to the new folder**
 cd autocompletion-search
+
+**### 3. Install the project**
 npm install
+
+**### 4. Run the project**
 npm start
