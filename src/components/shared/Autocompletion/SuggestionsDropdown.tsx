@@ -5,6 +5,7 @@ interface SuggestionsDropdownProps {
   highlightedIndex: number;
   onSuggestionClick: (suggestion: string) => void;
   onHighlightChange: (index: number) => void;
+  query: string;
 }
 
 const SuggestionsDropdown: React.FC<SuggestionsDropdownProps> = ({
@@ -12,7 +13,26 @@ const SuggestionsDropdown: React.FC<SuggestionsDropdownProps> = ({
   highlightedIndex,
   onSuggestionClick,
   onHighlightChange,
+  query,
 }) => {
+  
+  const highlightMatch = (text: string, query: string) => {
+    if (!query) return text;
+
+    const regex = new RegExp(`(${query})`, "gi");
+    const parts = text.split(regex);
+
+    return parts.map((part, index) =>
+      part.toLowerCase() === query.toLowerCase() ? (
+        <span key={index} className="highlight">
+          {part}
+        </span>
+      ) : (
+        part
+      )
+    );
+  };
+
   return (
     <ul className="autocompletion-suggestions">
       {suggestions.length > 0 && (
@@ -23,7 +43,7 @@ const SuggestionsDropdown: React.FC<SuggestionsDropdownProps> = ({
             onClick={() => onSuggestionClick(suggestion)}
             onMouseEnter={() => onHighlightChange(index)} // Highlight suggestion on hover
           >
-            {suggestion}
+            {highlightMatch(suggestion, query)}
           </li>
         ))
       )}
