@@ -22,6 +22,11 @@
     z-index: 1000;
   }
   
+  .highlight {
+    font-weight: bold;
+    color: #000000;
+  }
+
   .suggestion-item {
     padding: 8px;
     cursor: pointer;
